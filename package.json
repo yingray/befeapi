@@ -1,0 +1,28 @@
+{
+  "name": "befeapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:client": "npm run gen:ng && npm run start --workspace=client",
+    "start:server": "npm run start --workspace=server",
+    "serve:mock": "prism mock api/index.yaml",
+    "serve:mockd": "prism mock api/index.yaml -d",
+    "serve:proxy": "prism proxy api/index.yaml http://localhost:5010 --errors",
+    "serve:doc": "npx redocly preview-docs api/index.yaml -p 5566",
+    "gen:ng": "openapi --input ./api/index.yaml --output ./client/src/api --client angular"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@redocly/cli": "^1.0.0-beta.102",
+    "@stoplight/prism-cli": "^4.10.0",
+    "openapi-typescript": "^5.4.0",
+    "openapi-typescript-codegen": "^0.23.0"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
